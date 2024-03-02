@@ -1,0 +1,80 @@
+/* Styles for the main container */
+.mainContainer {
+  width: 100%;
+
+  height: 4.0625rem; /* 65px converted to rem */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: sticky;
+  top: 0;
+  /*z-index: var(--z-index-overlay);
+  /* box-shadow: var(--box-shadow-medium);*/
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: left;
+  font-size: 25px;
+  width: 50vw;
+  height: 100%;
+  color: black;
+  background-color: white;
+  justify-content: space-around;
+}
+.navbarItems {
+  display: flex;
+  flex-direction: row;
+}
+/* Styles for the inner container */
+.innerContainer {
+  width: 100%;
+  background: white;
+  height: 4.0625rem; /* 65px converted to rem */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /*
+  padding-left: 3.375rem;  54px converted to rem 
+  padding-right: 3.375rem; /* 54px converted to rem */
+}
+
+/* Styles for the tools */
+.tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem; /* 10px converted to rem */
+}
+
+/* Media queries for responsiveness */
+
+/* Styles for small devices (phones) */
+@media (max-width: 36rem) {
+  /* 576px converted to rem */
+  /* Add CSS styles for small devices here */
+}
+
+/* Styles for small devices (tablets) */
+@media (min-width: 36.063rem) and (max-width: 48rem) {
+  /* 577px and 768px converted to rem */
+  /* Add CSS styles for small devices here */
+}
+
+/* Styles for medium devices (laptops and desktops) */
+@media (min-width: 48.063rem) and (max-width: 62rem) {
+  /* 769px and 992px converted to rem */
+  /* Add CSS styles for medium devices here */
+}
+
+/* Styles for large devices (desktops) */
+@media (min-width: 62.063rem) and (max-width: 75rem) {
+  /* 993px and 1200px converted to rem */
+  /* Add CSS styles for large devices here */
+}
+
+/* Styles for extra large devices (large desktops and TVs) */
+@media (min-width: 75.063rem) {
+  /* 1201px converted to rem */
+  /* Add CSS styles for extra large devices here */
+}
