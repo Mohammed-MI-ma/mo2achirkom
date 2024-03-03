@@ -5,13 +5,10 @@ import { CiLight } from "react-icons/ci";
 import NavbarItems from "./NavbarItems";
 
 import style from "./Navbar.module.css";
-import { useTranslation } from "react-i18next";
 import { FaRegCopyright } from "react-icons/fa";
 import { Divider } from "antd";
 
 const Navbar = () => {
-  const { t } = useTranslation();
-
   // State to manage the switch checked status and message API
   const [isChecked, setIsChecked] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
