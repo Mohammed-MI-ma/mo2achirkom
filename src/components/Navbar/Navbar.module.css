@@ -20,7 +20,6 @@
   width: 50vw;
   height: 100%;
   color: black;
-  background-color: white;
   justify-content: space-around;
 }
 .navbarItems {
@@ -30,15 +29,17 @@
 /* Styles for the inner container */
 .innerContainer {
   width: 100%;
-  background: white;
   height: 4.0625rem; /* 65px converted to rem */
   display: flex;
   justify-content: space-between;
   align-items: center; /*
+  
   padding-left: 3.375rem;  54px converted to rem 
   padding-right: 3.375rem; /* 54px converted to rem */
 }
-
+.reverse {
+  flex-direction: row-reverse;
+}
 /* Styles for the tools */
 .tools {
   display: flex;

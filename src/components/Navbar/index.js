@@ -7,12 +7,16 @@ import NavbarItems from "./NavbarItems";
 import style from "./Navbar.module.css";
 import { FaRegCopyright } from "react-icons/fa";
 import { Divider } from "antd";
+import InternationalizationDropDown from "../InternationalizationDropDown";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   // State to manage the switch checked status and message API
   const [isChecked, setIsChecked] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
-
+  const languag = useSelector((state) => state.application.language);
+  const { t } = useTranslation();
   // Function to handle switch toggle
   const onChange = (checked) => {
     // Configuration for the success message based on switch state
@@ -33,30 +37,45 @@ const Navbar = () => {
 
   return (
     <div className={style.mainContainer}>
-      <div className={style.innerContainer}>
+      <div
+        className={`${style.innerContainer} ${
+          languag === "ar" ? style.reverse : ""
+        }`}
+      >
         {/* Logo */}
-        <div className={style.logo}>
-          {" "}
+        <div
+          className={`${style.logo} ${languag === "ar" ? style.reverse : ""}`}
+        >
           <div
             style={{
               display: "flex",
               justifyContent: "start",
               position: "relative",
-              alignItems: "start",
+              alignItems: languag === "ar" ? "flex-end" : "start",
               flexDirection: "column",
+              fontFamily: "Primary-Regular",
             }}
           >
-            {" "}
-            <span>
+            <span
+              style={{
+                display: "flex",
+                justifyContent: "start",
+                position: "relative",
+                alignItems: languag === "ar" ? "flex-end" : "start",
+                flexDirection: languag === "ar" ? "row-reverse" : "row",
+                fontFamily: "Primary-Regular",
+                gap: "10px",
+              }}
+            >
               {/* Add your logo here */}
-              Mo'Achirkom.ma
+              {t("Logo")}
               <sup>
                 <FaRegCopyright size={10} />
               </sup>
             </span>
-            <span style={{ fontSize: "10px" }}>
+            <span style={{ fontSize: "12px" }}>
               {/* Add your logo here */}
-              En un Clin d'œil : Simuler, Obtenir un Score, Réussir.
+              في لحظة: محاكاة، الحصول على درجة، النجاح{" "}
             </span>
           </div>{" "}
           <Divider type="vertical" />
@@ -83,14 +102,7 @@ const Navbar = () => {
             {contextHolder}
             {/* Switch component for toggling light/dark mode */}
 
-            <Switch
-              title="Toggle light/dark mode"
-              onChange={onChange}
-              checkedChildren={<CiLight size={"20px"} />}
-              unCheckedChildren={<MdOutlineModeNight size={"20px"} />}
-              checked={isChecked}
-            />
-            {/* Internationalization drop-down component */}
+            <InternationalizationDropDown />
           </div>
         </div>
       </div>

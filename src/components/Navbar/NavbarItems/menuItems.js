@@ -1,22 +1,16 @@
 // Define the menu structure
 const menuItems = [
   {
-    title: "Home",
-    submenus: [
-      "Featured Products",
-      "New Arrivals",
-      "Best Sellers",
-      "Special Offers",
-      "About Us",
-    ],
+    title: "home",
+    submenus: ["About Us"],
   },
 
   {
-    title: "My Account",
+    title: "account",
     submenus: ["Login/Register"],
   },
   {
-    title: "Blog",
+    title: "services",
     submenus: [
       "Art Tips",
       "Featured Artists",
@@ -26,13 +20,8 @@ const menuItems = [
   },
 
   {
-    title: "Policies",
-    submenus: [
-      "Shipping Policy",
-      "Return Policy",
-      "Privacy Policy",
-      "Terms and Conditions",
-    ],
+    title: "procedures",
+    submenus: ["Privacy Policy", "Terms and Conditions"],
   },
 ];
 export default menuItems;
