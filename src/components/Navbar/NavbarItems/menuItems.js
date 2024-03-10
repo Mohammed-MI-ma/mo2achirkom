@@ -6,22 +6,34 @@ const menuItems = [
   },
 
   {
-    title: "account",
-    submenus: ["Login/Register"],
-  },
-  {
     title: "services",
     submenus: [
-      "Art Tips",
-      "Featured Artists",
-      "Behind the Scenes",
-      "Latest Trends",
+      "Score Simulation",
+      "Score Analysis",
+      "Score Optimization Tips",
+      "Program Guidance",
+      "Score Tracking",
+      "Government Portals",
     ],
   },
 
   {
     title: "procedures",
-    submenus: ["Privacy Policy", "Terms and Conditions"],
+    submenus: ["How2CreateAccount", "Simulation"],
   },
 ];
+
+// Function to reverse submenus for Arabic language
+export function reverseSubmenusForArabic(menuItems, isArabicLanguage) {
+  if (isArabicLanguage) {
+    return menuItems
+      .map((item) => ({
+        ...item,
+        submenus: item.submenus.reverse(),
+      }))
+      .reverse();
+  }
+  return menuItems;
+}
+
 export default menuItems;

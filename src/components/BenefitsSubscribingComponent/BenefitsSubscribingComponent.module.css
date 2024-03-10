@@ -1,0 +1,5 @@
+.carouselHolder {
+}
+.carouselHolder > div {
+  display: flex;
+}

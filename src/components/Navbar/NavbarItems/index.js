@@ -3,12 +3,17 @@ import { useTranslation } from "react-i18next";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Menu } from "antd";
 import style from "./NavbarItems.module.css";
-import menuItems from "./menuItems"; // Import menuItems
+import menuItems, { reverseSubmenusForArabic } from "./menuItems"; // Import menuItems
+import { useSelector } from "react-redux";
+
+// Function to reverse submenus for Arabic language
 
 // Dropdown component for individual menu items
-const DropdownMenu = ({ title, submenus, t }) => {
+const DropdownMenu = ({ title, submenus, t, rtl }) => {
+  const languag = useSelector((state) => state.application.language);
+
   const menu = (
-    <Menu>
+    <Menu style={{ direction: rtl ? "rtl" : "" }}>
       {submenus.map((submenu, index) => (
         <Menu.Item key={`${title}-${index}`}>{t(submenu)}</Menu.Item>
       ))}
@@ -17,7 +22,14 @@ const DropdownMenu = ({ title, submenus, t }) => {
 
   return (
     <Dropdown overlay={menu}>
-      <span>
+      <span
+        style={{
+          fontFamily: "Primary-Regular-ar",
+          fontWeight: "bold",
+          fontSize: "16px",
+          direction: languag === "ar" ? "rtl" : "ltr",
+        }}
+      >
         {t(title)} <DownOutlined />
       </span>
     </Dropdown>
@@ -27,18 +39,22 @@ const DropdownMenu = ({ title, submenus, t }) => {
 // Main NavbarItems component
 const NavbarItems = () => {
   const { t } = useTranslation();
+  const language = useSelector((state) => state.application.language);
 
   return (
     <div className={style.container}>
-      {menuItems.map((menuItem, index) => (
-        <DropdownMenu
-          open={true}
-          key={index}
-          title={menuItem.title}
-          submenus={menuItem.submenus}
-          t={t}
-        />
-      ))}
+      {reverseSubmenusForArabic(menuItems, language === "ar")?.map(
+        (menuItem, index) => (
+          <DropdownMenu
+            rtl={language === "ar"}
+            open={true}
+            key={index}
+            title={menuItem.title}
+            submenus={menuItem.submenus}
+            t={t}
+          />
+        )
+      )}
     </div>
   );
 };

@@ -1,40 +1,22 @@
-import React, { useState } from "react";
-import { Switch, message } from "antd";
-import { MdOutlineModeNight } from "react-icons/md";
-import { CiLight } from "react-icons/ci";
+import React from "react";
+import { Avatar, Button } from "antd";
+
 import NavbarItems from "./NavbarItems";
 
 import style from "./Navbar.module.css";
 import { FaRegCopyright } from "react-icons/fa";
-import { Divider } from "antd";
 import InternationalizationDropDown from "../InternationalizationDropDown";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { Logo } from "../../images";
+import { CgMenuRightAlt } from "react-icons/cg";
+import SearchInputField from "../SearchInputField";
+import { setSideMenuIsOpened } from "../../reducers/applicationService/applicationSlice";
 
 const Navbar = () => {
-  // State to manage the switch checked status and message API
-  const [isChecked, setIsChecked] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage();
   const languag = useSelector((state) => state.application.language);
   const { t } = useTranslation();
-  // Function to handle switch toggle
-  const onChange = (checked) => {
-    // Configuration for the success message based on switch state
-    const config = isChecked
-      ? {
-          content: "Mode sombre activé", // Message content for light mode
-          rtl: true, // Right-to-left direction for message display
-        }
-      : {
-          content: "Mode clair activé", // Message content for dark mode
-          rtl: true, // Right-to-left direction for message display
-        };
-
-    // Show success message and update switch state
-    messageApi.success(config);
-    setIsChecked(checked);
-  };
-
+  const d = useDispatch();
   return (
     <div className={style.mainContainer}>
       <div
@@ -53,7 +35,7 @@ const Navbar = () => {
               position: "relative",
               alignItems: languag === "ar" ? "flex-end" : "start",
               flexDirection: "column",
-              fontFamily: "Primary-Regular",
+              fontFamily: "Primary-Regular-ar",
             }}
           >
             <span
@@ -61,35 +43,49 @@ const Navbar = () => {
                 display: "flex",
                 justifyContent: "start",
                 position: "relative",
-                alignItems: languag === "ar" ? "flex-end" : "start",
+                alignItems: "center",
                 flexDirection: languag === "ar" ? "row-reverse" : "row",
-                fontFamily: "Primary-Regular",
                 gap: "10px",
               }}
             >
               {/* Add your logo here */}
-              {t("Logo")}
+              <Avatar
+                className={style.logoImage}
+                src={Logo}
+                shape="square"
+                alt="logo"
+              />
+              <h1
+                style={{
+                  margin: "0px",
+                  direction: languag === "ar" ? "rtl" : "",
+                  fontFamily: `Special-Logo-${languag}`,
+                }}
+              >
+                {t("Logo")}
+              </h1>
               <sup>
                 <FaRegCopyright size={10} />
               </sup>
             </span>
-            <span style={{ fontSize: "12px" }}>
+            <span
+              style={{
+                fontSize: "10px",
+                direction: languag === "ar" ? "rtl" : "",
+              }}
+            >
               {/* Add your logo here */}
-              في لحظة: محاكاة، الحصول على درجة، النجاح{" "}
+              {t("Slogan")}
             </span>
           </div>{" "}
-          <Divider type="vertical" />
-          <div style={{ visibility: "hidden" }}>
-            {" "}
-            {/* Add your logo here */}
-            mu2achirkom
-          </div>
         </div>
         <div
+          className={style.myContainer}
           style={{
             width: "50vw",
             display: "flex",
-            justifyContent: "space-around",
+            flexDirection: languag === "ar" ? "row-reverse" : "row",
+            gap: "10px",
           }}
         >
           {/* Navbar items */}
@@ -98,13 +94,18 @@ const Navbar = () => {
           </div>
           {/* Tools section */}
           <div className={style.tools}>
-            {/* Message context holder */}
-            {contextHolder}
-            {/* Switch component for toggling light/dark mode */}
-
-            <InternationalizationDropDown />
+            <InternationalizationDropDown /> &nbsp;&nbsp;
+            <SearchInputField />
           </div>
         </div>
+      </div>
+      <div className={style.onMobileViewExtraMenu}>
+        {/* <!-- button humburger -->*/}
+        <SearchInputField />
+        <Button
+          icon={<CgMenuRightAlt />}
+          onClick={() => d(setSideMenuIsOpened(true))}
+        />
       </div>
     </div>
   );

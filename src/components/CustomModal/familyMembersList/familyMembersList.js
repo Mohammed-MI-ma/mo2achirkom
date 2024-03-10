@@ -1,0 +1,23 @@
+export const familyMemebersList = [
+  { arabic: "والد", french: "Père" },
+  { arabic: "والدة", french: "Mère" },
+  { arabic: "ابن", french: "Fils" },
+  { arabic: "ابنة", french: "Fille" },
+  { arabic: "زوجي", french: "Mari" },
+  { arabic: "زوجتي", french: "Épouse" },
+  { arabic: "أخ", french: "Frère" },
+  { arabic: "أخت", french: "Sœur" },
+  { arabic: "جدي", french: "Grand-père" },
+  { arabic: " جدتي", french: "Grand-mère" },
+  { arabic: "حفيد", french: "Petit-fils" },
+  { arabic: "حفيدة", french: "Petite-fille" },
+  { arabic: "عم / عمّي", french: "Oncle" },
+  { arabic: "عمة / عمتي", french: "Tante" },
+  { arabic: "ابن العم / ابن العمة", french: "Cousin (masculin)" },
+  { arabic: "ابنة العم / ابنة العمة", french: "Cousine (féminin)" },
+  { arabic: "ابن الأخ(ت)", french: "Neveu" },
+  { arabic: "ابنة الأخ(ت)", french: "Nièce" },
+
+  { arabic: "ابن الزوج / ابن الزوجة", french: "Beau-fils" },
+  { arabic: "ابنة الزوج / ابنة الزوجة", french: "Belle-fille" },
+];

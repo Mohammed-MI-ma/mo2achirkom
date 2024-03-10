@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Define initial state for language
 const initialState = {
-  language: "fr", // Default language
+  language: "ar", // Default language
+  sideMenuIsOpened: false,
+  modalSimulationIsOpened: false,
+  sitePrimaryFontRegular: "Primary-Regular-ar",
+  siteDirection: "rtl",
 };
 
 // Define slice for language
@@ -13,9 +17,27 @@ const applicationSlice = createSlice({
     setLanguage: (state, action) => {
       state.language = action.payload;
     },
+    setSideMenuIsOpened: (state, action) => {
+      state.sideMenuIsOpened = action.payload;
+    },
+    setModalSimulationIsOpened: (state, action) => {
+      state.modalSimulationIsOpened = action.payload;
+    },
+    setPrimaryRegularFont: (state, action) => {
+      state.sitePrimaryFontRegular = action.payload;
+    },
+    setSiteDirection: (state, action) => {
+      state.siteDirection = action.payload;
+    },
   },
 });
 
-export const { setLanguage } = applicationSlice.actions;
+export const {
+  setLanguage,
+  setSideMenuIsOpened,
+  setModalSimulationIsOpened,
+  setPrimaryRegularFont,
+  setSiteDirection,
+} = applicationSlice.actions;
 
 export default applicationSlice.reducer;

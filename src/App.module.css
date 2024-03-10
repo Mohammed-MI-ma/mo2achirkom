@@ -4,3 +4,9 @@
   background-position: 71% -124px;
   min-height: 131px;
 }
+.wrapper {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+}

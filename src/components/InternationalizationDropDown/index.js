@@ -4,26 +4,37 @@ import { ReactSVG } from "react-svg";
 import fr from "../../assets/images/fr.svg";
 import ma from "../../assets/images/ma.svg";
 import { useTranslation } from "react-i18next";
-import i18n from "i18next"; // Import the i18n instance to change the language
-
+import { FaUser } from "react-icons/fa";
 import { Dropdown } from "antd";
 import { useDispatch } from "react-redux";
-import { setLanguage } from "../../reducers/applicationService/applicationSlice";
+import {
+  setLanguage,
+  setSiteDirection,
+} from "../../reducers/applicationService/applicationSlice";
+import { useNavigate } from "react-router-dom";
 
 const InternationalizationDropDown = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const items = [
     {
       key: "1",
       icon: <ReactSVG src={ma} />,
       label: (
         <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
           onClick={() => {
             changeLanguage("ar");
           }}
         >
-          <span style={{ fontFamily: "Primary-Regular" }}> {t("arabic")}</span>
+          <span style={{ fontFamily: "Primary-Regular-ar" }}>
+            {t("arabic")}
+          </span>
         </div>
       ),
     },
@@ -36,28 +47,33 @@ const InternationalizationDropDown = () => {
             changeLanguage("fr");
           }}
         >
-          <span style={{ fontFamily: "Primary-Regular" }}> {t("french")}</span>
+          <span style={{ fontFamily: "Primary-Regular-ar" }}>
+            {" "}
+            {t("french")}
+          </span>
         </div>
       ),
     },
   ];
-  const handleMenuClick = (e) => {
-    console.log("click", e);
-  };
-  const menuProps = {
-    items,
-    onClick: handleMenuClick,
-  };
+
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     dispatch(setLanguage(lng));
+    dispatch(setSiteDirection(lng === "ar" ? "rtl" : "ltr"));
+
+    navigate("/", { replace: true }); // Navigate to the root URL without adding to history
+    navigate(`/${lng}/web/guest/accueil`);
   };
+
   return (
     <Dropdown.Button
+      type="text "
       arrow={true}
-      menu={menuProps}
+      menu={{ items }}
       icon={<GrLanguage style={{ cursor: "pointer" }} />}
-    ></Dropdown.Button>
+    >
+      <FaUser />
+    </Dropdown.Button>
   );
 };
 

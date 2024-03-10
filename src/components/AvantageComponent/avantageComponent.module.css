@@ -1,0 +1,25 @@
+.avantageComponent {
+}
+
+.avantageComponent h3 {
+  color: #047750;
+  font-size: 21px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  margin-bottom: 18px;
+  position: relative;
+  padding-left: 0;
+  width: 100%;
+}
+
+.avantageComponent h3::before {
+  content: "";
+  width: 5px;
+  height: 16px;
+  background-color: #c1272d;
+  display: block;
+  margin-top: -1px;
+  margin-right: 6px;
+  align-self: center;
+}

@@ -1,5 +1,5 @@
 :root {
-  --font-primary: "Primary-Regular", sans-serif;
+  --font-primary: "Primary-Regular-ar", sans-serif;
 }
 
 /* Font Sizes */
@@ -19,6 +19,7 @@
   --color-text: #333; /* Text color */
   --color-background: #1d1d1f; /* Background color */
   --color-border: #ccc; /* Border color */
+  --color-theme: #088772;
 }
 
 /* Spacing */
@@ -58,7 +59,12 @@ body {
   background-color: #ffffff;
   color: var(--color-primary);
   font-size: var(--font-small-size);
+  font-family: "Primary-Regular-ar";
 }
+li {
+  font-family: "Primary-Regular-ar";
+}
+
 header {
   background-color: #ffffff;
   position: relative;
@@ -81,10 +87,6 @@ header {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: var(--color-theme);
   border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
