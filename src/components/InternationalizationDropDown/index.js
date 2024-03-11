@@ -72,7 +72,7 @@ const InternationalizationDropDown = () => {
       menu={{ items }}
       icon={<GrLanguage style={{ cursor: "pointer" }} />}
     >
-      <FaUser />
+      <FaUser color={"var(--color-theme)"} />
     </Dropdown.Button>
   );
 };

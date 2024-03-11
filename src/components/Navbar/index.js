@@ -35,7 +35,7 @@ const Navbar = () => {
               position: "relative",
               alignItems: languag === "ar" ? "flex-end" : "start",
               flexDirection: "column",
-              fontFamily: "Primary-Regular-ar",
+              fontFamily: `Primary-Regular-${languag}`,
             }}
           >
             <span

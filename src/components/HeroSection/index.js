@@ -28,6 +28,7 @@ const HeroDescription = ({ language }) => {
         className={style.descriptionCmtMeng}
         style={{ direction: language === "ar" ? "rtl" : "ltr" }}
       >
+        <br></br>
         <h1 style={{ fontFamily: specialFontCurentlyUsed }}>{t("Logo")}</h1>
         <p
           style={{
@@ -54,16 +55,18 @@ const HeroDescription = ({ language }) => {
         <footer>
           <Link to="https://www.rsu.ma/ar/web/guest/accueil">
             <ActionButton
+              title={t("leaveSite")}
               onClick={null}
               icon={<GoSkipFill />}
               size={"large"}
-              style={{ background: "#F7788D" }}
+              style={{ background: "var(--color-theme)" }}
             >
               {t("SkipToRSU")}
             </ActionButton>{" "}
           </Link>
 
           <ActionButton
+            title={null}
             onClick={() => d(setModalSimulationIsOpened(true))}
             icon={<BsCalculatorFill />}
             size={"large"}
@@ -109,58 +112,67 @@ const HeroSteps = () => {
             items={[
               {
                 title: (
-                  <Link to={t("RSU path")} style={{ color: "gray" }}>
-                    <Tooltip title="Thanks for using antd. Have a nice day!">
-                      <p
-                        style={{
-                          fontFamily: "Primary-Regular-ar",
-                          fontSize: "16px",
-                        }}
+                  <Link to={t("RNP path")} style={{ color: "gray" }}>
+                    <ParagraphContainer>
+                      <Tooltip
+                        title={
+                          <p
+                            style={{
+                              direction: language === "ar" ? "rtl" : "ltr",
+                            }}
+                          >
+                            {t("visitRnpWebsite")}
+                          </p>
+                        }
                       >
                         {t("idcs")}
-                      </p>
-                    </Tooltip>
+                      </Tooltip>
+                    </ParagraphContainer>
                   </Link>
                 ),
                 status: "finish",
                 description: (
-                  <p
-                    style={{
-                      fontFamily: "Primary-Regular-ar",
-                      fontSize: "16px",
-                    }}
-                  >
-                    "هذه خطوة إلزامية يجب أن تمتلك رمز IDCS الخاص بك للمضي
-                    قدمًا",
-                  </p>
+                  <ParagraphContainer>
+                    {t("visitRnpWebsiteDescription")}
+                  </ParagraphContainer>
                 ),
               },
               {
                 title: (
                   <Link
-                    to={"https://www.rnp.ma/"}
+                    to={t("RSU path")}
                     style={{
                       color: "var(--color-theme)",
                     }}
                   >
-                    <Tooltip title="Thanks for using antd. Have a nice day!">
-                      <p
-                        style={{
-                          fontFamily: "Primary-Regular-ar",
-                          fontSize: "16px",
-                        }}
+                    <ParagraphContainer
+                      style={{
+                        fontWeight: "bold",
+                      }}
+                    >
+                      <Tooltip
+                        title={
+                          <p
+                            style={{
+                              direction: language === "ar" ? "rtl" : "ltr",
+                            }}
+                          >
+                            {t("visitRnpWebsite")}
+                          </p>
+                        }
+                        style={{ direction: language === "ar" ? "rtl" : "ltr" }}
                       >
-                        بدء المحاكاة
-                      </p>
-                    </Tooltip>
+                        {t("startSimulationNow")}
+                      </Tooltip>
+                    </ParagraphContainer>
                   </Link>
                 ),
                 status: "process",
                 description: (
                   <p
                     style={{
-                      fontFamily: "Primary-Regular-ar",
-                      fontSize: "16px",
+                      fontFamily: `Primary-Regular-${language}`,
+                      fontSize: "var(--font-medium-size)",
                     }}
                   >
                     الآن يمكنك بدء المحاكاة، محاكاة ممتعة!
@@ -172,8 +184,8 @@ const HeroSteps = () => {
                   <Tooltip title="Thanks for using antd. Have a nice day!">
                     <p
                       style={{
-                        fontFamily: "Primary-Regular-ar",
-                        fontSize: "16px",
+                        fontFamily: `Primary-Regular-${language}`,
+                        fontSize: "var(--font-medium-size)",
                       }}
                     >
                       اذهب إلى RSU.MA
@@ -184,13 +196,13 @@ const HeroSteps = () => {
                 description: (
                   <p
                     style={{
-                      fontFamily: "Primary-Regular-ar",
-                      fontSize: "16px",
+                      fontFamily: `Primary-Regular-${language}`,
+                      fontSize: "var(--font-medium-size)",
                     }}
                   >
-                    "عند زيارة RSU، ستجد واجهة مستخدم مماثلة، لذا يمكنك تطبيق
-                    النتائج المرغوبة التي تم العثور عليها على منصتنا. على موقع
-                    RSU.ma الرسمي، سيُطلب منك تقديم البيانات الحقيقية.",
+                    عند زيارة RSU، ستجد واجهة مستخدم مماثلة، لذا يمكنك تطبيق
+                    النتائج المرغوبة التي تم العثور عليها على منصتنا. في موقع
+                    RSU.ma الرسمي، سيُطلب منك تقديم البيانات الحقيقية.
                   </p>
                 ),
               },
@@ -201,7 +213,21 @@ const HeroSteps = () => {
     </Col>
   );
 };
+const ParagraphContainer = ({ children, style }) => {
+  const language = useSelector((state) => state.application.language);
 
+  return (
+    <p
+      style={{
+        ...style,
+        fontFamily: `Primary-Regular-${language}`,
+        fontSize: "var(--font-medium-size)",
+      }}
+    >
+      {children}
+    </p>
+  );
+};
 const HeroSection = () => {
   const language = useSelector((state) => state.application.language);
 

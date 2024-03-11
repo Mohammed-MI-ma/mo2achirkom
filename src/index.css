@@ -64,7 +64,9 @@ body {
 li {
   font-family: "Primary-Regular-ar";
 }
-
+p {
+  font-family: "Primary-Regular-ar";
+}
 header {
   background-color: #ffffff;
   position: relative;
