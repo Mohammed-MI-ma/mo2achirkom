@@ -1,48 +1,55 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+//__REACT
+import React, { Suspense, lazy, useEffect, useState } from "react";
+
+//__REACT-DOM
+import { Navigate, Route, Routes } from "react-router-dom";
+
+//__REACT_REDUX
+import { useSelector } from "react-redux";
+
+//__ANTD
+import { ConfigProvider, BackTop } from "antd";
+import frFR from "antd/lib/locale/fr_FR";
+import arEG from "antd/lib/locale/ar_EG";
+
+//__CONFIG
 import { loadFonts, loadImages } from "./services/functions/functions";
-import { FontsConfig } from "./fontsConfig";
 import ImageConfig from "./config.dev";
+import { FontsConfig } from "./fontsConfig";
+
+//__STYLING
 import style from "./App.module.css";
-import { ConfigProvider, Spin, BackTop } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import frFR from "antd/lib/locale/fr_FR"; // Correct import for French locale
-import arEG from "antd/lib/locale/ar_EG"; // Correct import for Arabic locale
-import {
-  setSideMenuIsOpened,
-  setModalSimulationIsOpened,
-} from "./reducers/applicationService/applicationSlice";
-import { useTranslation } from "react-i18next";
-import DrawerComponent from "./components/DrawerComponent";
-import MenuAsideComponent from "./components/MenuAsideComponent";
-import { Helmet } from "react-helmet";
-import HeroSection from "./components/HeroSection";
-import BenefitsSubscribingComponent from "./components/BenefitsSubscribingComponent";
-import CustomModal from "./components/CustomModal";
+
+//__COMPONENTS && LAZY COMPONENTS
+import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
+import Loader from "./components/Loader";
+// Lazy load component for mobile view
+const LazyAsideMenu = lazy(() =>
+  import("./components/Mobile__Components/AsideMenuMobile")
+);
+// Lazily load the component responsible for starting the simulation modal
+const SimulationModal = lazy(() =>
+  import("./components/simulation_business_logic/SimulationModal")
+);
 
 function App() {
   // Initializing state for tracking the loading status of necessary assets
   const [appIsReady, setAppIsReady] = useState(false);
 
-  const language = useSelector((state) => state.application.language);
-  const open = useSelector((state) => state.application.sideMenuIsOpened);
+  // Retrieve the state indicating whether the simulation modal is open or closed
   const openModalSimulation = useSelector(
     (state) => state.application.modalSimulationIsOpened
   );
-
-  const { t } = useTranslation();
+  // Retrieve the currently selected language from the application state
+  const language = useSelector((state) => state.application.language);
 
   const [loading, setLoading] = useState(true);
-  const [locale, setLocale] = useState(null); // Initialize locale state as null
-  const [placement, setPlacement] = useState(null);
-  const dispatch = useDispatch();
 
-  const onClose = () => {
-    dispatch(setSideMenuIsOpened(false));
-  };
+  // Initialize locale state as null
+  const [locale, setLocale] = useState(null);
 
+  // useEffect hook to fetch fonts and images, then update loading state
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,38 +65,17 @@ function App() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    setPlacement(language === "ar" ? "right" : "left");
-  }, [language]);
-
   // Update locale whenever language changes
   useEffect(() => {
     setLocale(language === "ar" ? arEG : frFR);
   }, [language]);
 
   if (!appIsReady) {
-    return (
-      <div
-        style={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Spin size="large" spinning={loading} />
-      </div>
-    );
+    return <Loader isLoading={loading} />;
   }
 
   return (
     <ConfigProvider locale={locale}>
-      <Helmet>
-        <html lang={language} />
-        <title>{t("home")}</title>
-        {/* Add other meta tags as needed */}
-      </Helmet>
       <div className={style.wrapper}>
         <header className={style.bgHeader}>
           <Navbar />
@@ -101,24 +87,16 @@ function App() {
           />
           <Route
             path={`/${language}/web/guest/accueil`}
-            element={<HomePage />}
+            element={<HomePage language={language} />}
           />
         </Routes>
       </div>
-      <DrawerComponent
-        open={open}
-        lang={language}
-        width={"100%"}
-        placement={placement}
-        onClose={onClose}
-        title={t("services")}
-      >
-        <MenuAsideComponent />
-      </DrawerComponent>
-      <CustomModal
-        open={openModalSimulation}
-        close={() => dispatch(setModalSimulationIsOpened(false))}
-      />{" "}
+      <Suspense fallback={<div>Loading...</div>}>
+        {openModalSimulation && <LazyAsideMenu />}
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        {openModalSimulation && <SimulationModal />}
+      </Suspense>
       <BackTop visibilityHeight={0} />
     </ConfigProvider>
   );

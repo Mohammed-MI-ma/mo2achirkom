@@ -56,17 +56,15 @@ const Navbar = () => {
                 alt="logo"
               />
               <h1
+                className={style.logo}
                 style={{
                   margin: "0px",
                   direction: languag === "ar" ? "rtl" : "",
                   fontFamily: `Special-Logo-${languag}`,
                 }}
               >
-                {t("Logo")}
+                {t("Logo1")}
               </h1>
-              <sup>
-                <FaRegCopyright size={10} />
-              </sup>
             </span>
             <span
               style={{

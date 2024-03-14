@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import style from "./heroSection.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { bgBlocTop } from "../../images";
@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import ActionButton from "../ActionButton";
 import { GoSkipFill } from "react-icons/go";
 import { BsCalculatorFill } from "react-icons/bs";
-import { Col, ConfigProvider, Row, Steps, Tooltip } from "antd";
+import { Col, ConfigProvider, Divider, Row, Spin, Steps, Tooltip } from "antd";
 import { Link } from "react-router-dom";
 import { setModalSimulationIsOpened } from "../../reducers/applicationService/applicationSlice";
 const HeroDescription = ({ language }) => {
@@ -15,6 +15,7 @@ const HeroDescription = ({ language }) => {
   const specialFontCurentlyUsed = `Special-Logo-${language}`;
 
   const d = useDispatch();
+  const [isPending, startTransition] = useTransition();
 
   return (
     <Col
@@ -28,7 +29,6 @@ const HeroDescription = ({ language }) => {
         className={style.descriptionCmtMeng}
         style={{ direction: language === "ar" ? "rtl" : "ltr" }}
       >
-        <br></br>
         <h1 style={{ fontFamily: specialFontCurentlyUsed }}>{t("Logo")}</h1>
         <p
           style={{
@@ -53,36 +53,39 @@ const HeroDescription = ({ language }) => {
           <p>{t("service24/7")}</p>
         </div>
         <footer>
-          <Link to="https://www.rsu.ma/ar/web/guest/accueil">
-            <ActionButton
-              title={t("leaveSite")}
-              onClick={null}
-              icon={<GoSkipFill />}
-              size={"large"}
-              style={{ background: "var(--color-theme)" }}
-            >
-              {t("SkipToRSU")}
-            </ActionButton>{" "}
-          </Link>
-
           <ActionButton
-            title={null}
-            onClick={() => d(setModalSimulationIsOpened(true))}
-            icon={<BsCalculatorFill />}
+            title={t("leaveSite")}
+            onClick={null}
+            icon={<GoSkipFill />}
             size={"large"}
             style={{ background: "var(--color-theme)" }}
           >
-            {t("startSimulationNow")}
+            <Link to="https://www.rsu.ma/ar/web/guest/accueil">
+              {t("SkipToRSU")}{" "}
+            </Link>
           </ActionButton>
+          <Spin spinning={isPending}>
+            <ActionButton
+              title={null}
+              onClick={() =>
+                startTransition(() => d(setModalSimulationIsOpened(true)))
+              }
+              icon={<BsCalculatorFill />}
+              size={"large"}
+              style={{ background: "var(--color-theme)" }}
+            >
+              {t("startSimulationNow")}
+            </ActionButton>
+          </Spin>
         </footer>
       </section>
     </Col>
   );
 };
 
-const HeroSteps = () => {
-  const language = useSelector((state) => state.application.language);
+const HeroSteps = ({ language }) => {
   const { t } = useTranslation();
+  const specialFontCurentlyUsed = `Special-Logo-${language}`;
 
   return (
     <Col
@@ -104,6 +107,9 @@ const HeroSteps = () => {
             },
           }}
         >
+          <h1 style={{ fontFamily: specialFontCurentlyUsed }}>
+            ما هي الخطوات التي يجب أن تتخذها؟
+          </h1>
           <Steps
             type="navigation"
             size="small"
@@ -125,7 +131,7 @@ const HeroSteps = () => {
                           </p>
                         }
                       >
-                        {t("idcs")}
+                        <p>{t("idcs")}</p>
                       </Tooltip>
                     </ParagraphContainer>
                   </Link>
@@ -201,8 +207,6 @@ const HeroSteps = () => {
                     }}
                   >
                     عند زيارة RSU، ستجد واجهة مستخدم مماثلة، لذا يمكنك تطبيق
-                    النتائج المرغوبة التي تم العثور عليها على منصتنا. في موقع
-                    RSU.ma الرسمي، سيُطلب منك تقديم البيانات الحقيقية.
                   </p>
                 ),
               },
@@ -229,6 +233,20 @@ const ParagraphContainer = ({ children, style }) => {
   );
 };
 const HeroSection = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const language = useSelector((state) => state.application.language);
 
   //__SITE DIRECTION: RTL or LTR
@@ -238,13 +256,38 @@ const HeroSection = () => {
   const siteFontReg = useSelector(
     (state) => state.application.sitePrimaryFontRegular
   );
+
+  // Define your media query conditions and corresponding styles
+  const mobileStyles = {
+    // Styles for mobile screens (max-width: 576px)
+    flexDirection: siteDir === "ltr" ? "column" : "column-reverse",
+  };
+
+  const tabletStyles = {
+    flexDirection: siteDir === "ltr" ? "column" : "column-reverse",
+  };
+
+  const desktopStyles = {
+    flexDirection: siteDir === "rtl" ? "row" : "row-reverse",
+  };
+
+  // Determine which styles to apply based on windowWidth
+  let inlineMediaQueries;
+  if (windowWidth <= 576) {
+    inlineMediaQueries = mobileStyles;
+  } else if (windowWidth <= 768) {
+    inlineMediaQueries = tabletStyles;
+  } else {
+    inlineMediaQueries = desktopStyles;
+  }
+
   return (
     <div className={style.container}>
       <div
         className={style.wrapBlCmtmng}
         style={{
-          paddingLeft: siteDir === "ltr" ? "20px" : "0px",
-          paddingRight: siteDir === "ltr" ? "0px" : "20px",
+          // paddingLeft: siteDir === "ltr" ? "20px" : "0px",
+          //  paddingRight: siteDir === "ltr" ? "0px" : "20px",
 
           width: "100%",
           fontFamily: siteFontReg,
@@ -252,13 +295,14 @@ const HeroSection = () => {
         }}
       >
         <section style={{ width: "100%" }}>
-          <Row
-            style={{
-              display: "flex",
-              flexDirection: siteDir === "ltr" ? "row-reverse" : "row",
-            }}
-          >
-            <HeroSteps />
+          {" "}
+          <div className="bg-blue-500 text-white p-4">
+            This is a div with a blue background and white text, padded with 4
+            units.
+          </div>
+          <Row style={inlineMediaQueries}>
+            <HeroSteps language={language} />
+            <Divider className={style.divider} />
             <HeroDescription language={language} />
           </Row>
         </section>
