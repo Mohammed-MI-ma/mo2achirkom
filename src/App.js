@@ -24,10 +24,9 @@ import style from "./App.module.css";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import Loader from "./components/Loader";
-// Lazy load component for mobile view
-const LazyAsideMenu = lazy(() =>
-  import("./components/Mobile__Components/AsideMenuMobile")
-);
+import Footer from "./components/Footer";
+import LazyAsideMenu from "./components/Mobile__Components/AsideMenuMobile";
+
 // Lazily load the component responsible for starting the simulation modal
 const SimulationModal = lazy(() =>
   import("./components/simulation_business_logic/SimulationModal")
@@ -41,6 +40,9 @@ function App() {
   const openModalSimulation = useSelector(
     (state) => state.application.modalSimulationIsOpened
   );
+
+  // Retrieve the state indicating whether the Menu Drawer is open or closed
+
   // Retrieve the currently selected language from the application state
   const language = useSelector((state) => state.application.language);
 
@@ -83,21 +85,20 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Navigate to={`/${language}/web/guest/accueil`} />}
+            element={<Navigate to={`/${language}/web/guest/acceuil`} />}
           />
           <Route
-            path={`/${language}/web/guest/accueil`}
+            path={`/${language}/web/guest/acceuil`}
             element={<HomePage language={language} />}
           />
         </Routes>
+        <Footer />
+        <BackTop visibilityHeight={0} />
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
-        {openModalSimulation && <LazyAsideMenu />}
-      </Suspense>
+      <LazyAsideMenu />
       <Suspense fallback={<div>Loading...</div>}>
         {openModalSimulation && <SimulationModal />}
       </Suspense>
-      <BackTop visibilityHeight={0} />
     </ConfigProvider>
   );
 }

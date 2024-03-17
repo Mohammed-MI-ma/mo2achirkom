@@ -1,11 +1,18 @@
+import { AiFillHome } from "react-icons/ai";
+import { RiCustomerService2Fill } from "react-icons/ri";
+import { AiOutlineDeliveredProcedure } from "react-icons/ai";
+
 // Define the menu structure
 const menuItems = [
   {
+    icon: <AiFillHome></AiFillHome>,
     title: "home",
     submenus: ["About Us"],
   },
 
   {
+    icon: <RiCustomerService2Fill></RiCustomerService2Fill>,
+
     title: "services",
     submenus: [
       "Score Simulation",
@@ -18,6 +25,7 @@ const menuItems = [
   },
 
   {
+    icon: <AiOutlineDeliveredProcedure></AiOutlineDeliveredProcedure>,
     title: "procedures",
     submenus: ["How2CreateAccount", "Simulation"],
   },

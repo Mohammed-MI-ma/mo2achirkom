@@ -1,7 +1,7 @@
-.avantageComponent {
+.advantageContainer {
 }
 
-.avantageComponent h3 {
+.advantageContainer h3 {
   color: #047750;
   font-size: 21px;
   font-weight: bold;
@@ -13,7 +13,7 @@
   width: 100%;
 }
 
-.avantageComponent h3::before {
+.advantageContainer h3::before {
   content: "";
   width: 5px;
   height: 16px;

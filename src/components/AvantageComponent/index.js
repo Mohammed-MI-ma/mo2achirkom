@@ -7,13 +7,12 @@ const AvantageComponent = () => {
   const language = useSelector((state) => state.application.language);
   const { t } = useTranslation();
   return (
-    <div
-      id="avantageComponent"
-      className={style.avantageComponent}
+    <section
+      className={`pl-0 pr-50 ${style.advantageContainer} ${
+        language === "fr" ? "lg:flex-row-reverse" : ""
+      }`}
+      dir={language === "ar" ? "rtl" : "ltr"}
       style={{
-        paddingLeft: "0",
-        paddingRight: "15px",
-        direction: language === "ar" ? "rtl" : "ltr",
         fontFamily: "Primary-Regular-ar",
         background: `url(${bgBlocTop})`,
       }}
@@ -35,7 +34,7 @@ const AvantageComponent = () => {
         name="keywords"
         content="subscription benefits, premium content, updates, discounts"
       />
-    </div>
+    </section>
   );
 };
 

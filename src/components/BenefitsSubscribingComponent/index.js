@@ -1,52 +1,26 @@
 import React from "react";
-import { Col, Row } from "antd";
 import AvantageComponent from "../AvantageComponent";
 import CarouselComponent from "../CarouselComponent";
-import style from "./BenefitsSubscribingComponent.module.css";
+import { useSelector } from "react-redux";
 const BenefitsSubscribingComponent = () => {
+  const language = useSelector((state) => state.application.language);
+
   return (
-    <section>
-      <Row>
-        <Col
-          className={style.carouselHolder}
-          xs={{
-            flex: "100%",
-          }}
-          sm={{
-            flex: "100%",
-          }}
-          md={{
-            flex: "50%",
-          }}
-          lg={{
-            flex: "50%",
-          }}
-          xl={{
-            flex: "50%",
-          }}
-        >
-          <CarouselComponent />{" "}
-        </Col>
-        <Col
-          xs={{
-            flex: "100%",
-          }}
-          sm={{
-            flex: "100%",
-          }}
-          md={{
-            flex: "50%",
-          }}
-          lg={{
-            flex: "50%",
-          }}
-          xl={{
-            flex: "50%",
-          }}
-        >
-          <AvantageComponent />
-        </Col>
-      </Row>
+    <section
+      className={`flex flex-col-reverse lg:flex-row items-center ${
+        language === "fr" ? "lg:flex-row-reverse" : ""
+      }`}
+      style={{
+        minHeight: "384px",
+      }}
+    >
+      <div className="lg:w-1/2  p-4">
+        <CarouselComponent />
+      </div>
+
+      <div className="lg:w-1/2  p-4">
+        <AvantageComponent language={language} />
+      </div>
     </section>
   );
 };

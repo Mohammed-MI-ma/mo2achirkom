@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 // Function to reverse submenus for Arabic language
 
 // Dropdown component for individual menu items
-const DropdownMenu = ({ title, submenus, t, rtl }) => {
+const DropdownMenu = ({ title, submenus, t, rtl, icon }) => {
   const languag = useSelector((state) => state.application.language);
 
   const menu = (
@@ -23,14 +23,14 @@ const DropdownMenu = ({ title, submenus, t, rtl }) => {
   return (
     <Dropdown overlay={menu}>
       <span
+        className="flex justify-center items-center gap-1 font-bold"
+        dir={languag === "ar" ? "rtl" : "ltr"}
         style={{
-          fontFamily: "Primary-Regular-ar",
-          fontWeight: "bold",
-          fontSize: "16px",
-          direction: languag === "ar" ? "rtl" : "ltr",
+          fontFamily: `Primary-Regular-${languag}`,
+          fontSize: "var(--font-medium-size)",
         }}
       >
-        {t(title)} <DownOutlined />
+        {icon} {t(title)} <DownOutlined />
       </span>
     </Dropdown>
   );
@@ -51,6 +51,7 @@ const NavbarItems = () => {
             key={index}
             title={menuItem.title}
             submenus={menuItem.submenus}
+            icon={menuItem.icon}
             t={t}
           />
         )

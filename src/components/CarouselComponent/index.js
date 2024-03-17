@@ -6,7 +6,6 @@ import { t } from "i18next";
 const CarouselComponent = () => {
   const languag = useSelector((state) => state.application.language);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const siteDir = useSelector((state) => state.application.siteDirection);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,12 +27,10 @@ const CarouselComponent = () => {
 
   const tabletStyles = {
     // Styles for mobile screens (max-width: 576px)
-    width: "40vw",
     padding: "15px",
   };
 
   const desktopStyles = {
-    width: "40vw",
     padding: "15px",
   };
   const contentStyle = {

@@ -8,7 +8,7 @@
 
 .descriptionCmtMeng > h1 {
   margin-bottom: 15px;
-  color: #c1272d;
+  color: var(--color-theme);
   font-weight: bold;
 }
 .divider {
@@ -20,8 +20,7 @@
     display: block;
   }
   .descriptionCmtMeng > h1 {
-    font-size: xx-large;
-    color: #c1272d;
+    font-size: 50px;
     font-weight: bold;
   }
   .descriptionCmtMeng > footer:last-child {
@@ -51,7 +50,7 @@
 /* Styles for large devices (desktops) */
 @media (min-width: 993px) and (max-width: 1200px) {
   .descriptionCmtMeng > h1 {
-    font-size: 38px;
+    font-size: 50px;
   }
   .divider {
     display: none;
@@ -61,7 +60,7 @@
 /* Styles for extra large devices (large desktops and TVs) */
 @media (min-width: 1201px) {
   .descriptionCmtMeng > h1 {
-    font-size: 38px;
+    font-size: 50px;
   }
   .divider {
     display: none;

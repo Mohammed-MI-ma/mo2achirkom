@@ -62,7 +62,7 @@ const InternationalizationDropDown = () => {
     dispatch(setSiteDirection(lng === "ar" ? "rtl" : "ltr"));
 
     navigate("/", { replace: true }); // Navigate to the root URL without adding to history
-    navigate(`/${lng}/web/guest/accueil`);
+    navigate(`/${lng}/web/guest/acceuil`);
   };
 
   return (

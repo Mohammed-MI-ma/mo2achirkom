@@ -20,7 +20,6 @@
   align-items: center;
   font-weight: bold;
   font-size: var(--font-Xlarge-size);
-  width: 50vw;
   height: 100%;
   color: var(--color-primary);
 }
@@ -37,6 +36,7 @@
   height: 4.0625rem; /* 65px converted to rem */
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .logoImage {
   width: 56px;

@@ -7,6 +7,8 @@ import { Helmet } from "react-helmet";
 
 //__REACT_i18N
 import { useTranslation } from "react-i18next";
+import CustomBreadcrumb from "../../components/CustomBreadcrumb";
+import OurPartners from "../../components/OurPartners";
 
 const HomePage = ({ language }) => {
   // Retrieve the translation function from the useTranslation hook
@@ -17,16 +19,35 @@ const HomePage = ({ language }) => {
       <Helmet>
         <html lang={language} />
         <title>{t("home")}</title>
+        <meta charSet="UTF-8" />
+        <meta
+          name="description"
+          content="Calculate your eligibility for social care programs based on socio-economic declarations with the RSU Calculator. Get accurate scores and guidance for accessing social welfare benefits. Free and easy-to-use."
+        />
+        <meta name="keywords" content="Keywords related to your content" />
+        <meta name="author" content="Morocco Innovation Hub" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={t("home")} />
+        <meta
+          property="og:description"
+          content="Description of your website/page"
+        />
+        <meta property="og:url" content="URL of the page" />
+        <meta property="og:image" content="URL of the image" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
         {/* Add other meta tags as needed */}
       </Helmet>
       <section style={{ flex: "1 1 auto" }}>
         <section id={"main-content"}>
           <HeroSection />
         </section>
+        <section style={{ flex: "1 1 auto" }} id={"Partners"}>
+          <OurPartners />
+        </section>
         <section style={{ flex: "1 1 auto" }}>
-          <div id={"Pros_and_cons_of_subscribing_to_RSU.ma"}>
-            <BenefitsSubscribingComponent />
-          </div>
+          <BenefitsSubscribingComponent />
         </section>
       </section>
     </>

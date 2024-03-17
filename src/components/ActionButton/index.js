@@ -22,6 +22,7 @@ const ActionButton = ({ size, icon, style, children, onClick, title }) => {
           fontFamily: `Primary-Regular-${languag}`,
           fontSize: "var(--font-small-size)",
           fontWeight: "bold",
+          textAlign: `${languag === "ar" ? "right" : "left"}`,
         }}
         className={`${languag === "ar" ? style.reverse : ""}`}
         type="primary"

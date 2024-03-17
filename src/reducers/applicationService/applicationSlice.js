@@ -7,6 +7,7 @@ const initialState = {
   modalSimulationIsOpened: false,
   sitePrimaryFontRegular: "Primary-Regular-ar",
   siteDirection: "rtl",
+  promoVideoOpened: false,
 };
 
 // Define slice for language
@@ -17,6 +18,10 @@ const applicationSlice = createSlice({
     setLanguage: (state, action) => {
       state.language = action.payload;
     },
+    setPromoVideoOpened: (state, action) => {
+      state.promoVideoOpened = action.payload;
+    },
+
     setSideMenuIsOpened: (state, action) => {
       state.sideMenuIsOpened = action.payload;
     },
@@ -38,6 +43,7 @@ export const {
   setModalSimulationIsOpened,
   setPrimaryRegularFont,
   setSiteDirection,
+  setPromoVideoOpened,
 } = applicationSlice.actions;
 
 export default applicationSlice.reducer;

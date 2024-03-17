@@ -4,7 +4,6 @@ import { Avatar, Button } from "antd";
 import NavbarItems from "./NavbarItems";
 
 import style from "./Navbar.module.css";
-import { FaRegCopyright } from "react-icons/fa";
 import InternationalizationDropDown from "../InternationalizationDropDown";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -12,7 +11,7 @@ import { Logo } from "../../images";
 import { CgMenuRightAlt } from "react-icons/cg";
 import SearchInputField from "../SearchInputField";
 import { setSideMenuIsOpened } from "../../reducers/applicationService/applicationSlice";
-
+import logooo from "../../assets/images/LogoText.png";
 const Navbar = () => {
   const languag = useSelector((state) => state.application.language);
   const { t } = useTranslation();
@@ -29,24 +28,19 @@ const Navbar = () => {
           className={`${style.logo} ${languag === "ar" ? style.reverse : ""}`}
         >
           <div
+            className={`flex justify-start relative flex-col items-${
+              languag === "fr" ? "center" : "flex-start"
+            }`}
             style={{
-              display: "flex",
-              justifyContent: "start",
-              position: "relative",
-              alignItems: languag === "ar" ? "flex-end" : "start",
-              flexDirection: "column",
               fontFamily: `Primary-Regular-${languag}`,
             }}
           >
             <span
-              style={{
-                display: "flex",
-                justifyContent: "start",
-                position: "relative",
-                alignItems: "center",
-                flexDirection: languag === "ar" ? "row-reverse" : "row",
-                gap: "10px",
-              }}
+              className={`flex ${
+                languag === "ar" ? "flex-row-reverse" : "flex-row"
+              } justify-start relative items-center ${
+                languag === "ar" ? "gap-4" : ""
+              }`}
             >
               {/* Add your logo here */}
               <Avatar
@@ -55,16 +49,20 @@ const Navbar = () => {
                 shape="square"
                 alt="logo"
               />
-              <h1
-                className={style.logo}
-                style={{
-                  margin: "0px",
-                  direction: languag === "ar" ? "rtl" : "",
-                  fontFamily: `Special-Logo-${languag}`,
-                }}
-              >
-                {t("Logo1")}
-              </h1>
+              {languag === "ar" ? (
+                <h1
+                  className={style.logo}
+                  style={{
+                    margin: "0px",
+                    direction: languag === "ar" ? "rtl" : "",
+                    fontFamily: `Special-Logo-${languag}`,
+                  }}
+                >
+                  {t("Logo1")}
+                </h1>
+              ) : (
+                <img src={logooo} alt=""></img>
+              )}
             </span>
             <span
               style={{
@@ -80,7 +78,6 @@ const Navbar = () => {
         <div
           className={style.myContainer}
           style={{
-            width: "50vw",
             display: "flex",
             flexDirection: languag === "ar" ? "row-reverse" : "row",
             gap: "10px",
