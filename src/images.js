@@ -4,6 +4,11 @@ export const Logo =
 export const bgBlocTop =
   "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/bgBlocTop.png";
 
+export const bgContent2Right =
+  "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/bgContent2-right.png";
+export const bgContent2Left =
+  "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/bgContent1-left.png";
+
 export const bgFooterVague =
   "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/bgFooterVague.jpg";
 

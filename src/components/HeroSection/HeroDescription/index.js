@@ -37,6 +37,7 @@ const HeroDescription = ({ language }) => {
     direction: language === "ar" ? "rtl" : "ltr",
   };
   const headerStyle = {
+    color: "var(--color-red)",
     fontFamily: specialLogoFont,
     paddingBottom: "1.25rem",
   };
@@ -91,6 +92,7 @@ const HeroDescription = ({ language }) => {
           }
         >
           <ActionButton
+            color="#79c1b5"
             title={null}
             onClick={null}
             icon={<GoSkipFill />}
@@ -103,6 +105,7 @@ const HeroDescription = ({ language }) => {
         {/* Define an ActionButton component to initiate the simulation modal flow */}
         <Spin spinning={isPending}>
           <ActionButton
+            color={"var(--color-theme)"}
             title={null}
             onClick={() =>
               startTransition(() => d(setModalSimulationIsOpened(true)))

@@ -8,7 +8,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 //__ANTD
-import { ConfigProvider, BackTop } from "antd";
+import { ConfigProvider, BackTop, Spin } from "antd";
 import frFR from "antd/lib/locale/fr_FR";
 import arEG from "antd/lib/locale/ar_EG";
 
@@ -22,10 +22,16 @@ import style from "./App.module.css";
 
 //__COMPONENTS && LAZY COMPONENTS
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
+
 import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import LazyAsideMenu from "./components/Mobile__Components/AsideMenuMobile";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Helmet } from "react-helmet";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage"));
 
 // Lazily load the component responsible for starting the simulation modal
 const SimulationModal = lazy(() =>
@@ -45,6 +51,7 @@ function App() {
 
   // Retrieve the currently selected language from the application state
   const language = useSelector((state) => state.application.language);
+  const primaryRegularFont = `Primary-Regular-${language}`;
 
   const [loading, setLoading] = useState(true);
 
@@ -77,29 +84,95 @@ function App() {
   }
 
   return (
-    <ConfigProvider locale={locale}>
-      <div className={style.wrapper}>
-        <header className={style.bgHeader}>
-          <Navbar />
-        </header>
-        <Routes>
-          <Route
-            path="/"
-            element={<Navigate to={`/${language}/web/guest/acceuil`} />}
-          />
-          <Route
-            path={`/${language}/web/guest/acceuil`}
-            element={<HomePage language={language} />}
-          />
-        </Routes>
-        <Footer />
-        <BackTop visibilityHeight={0} />
-      </div>
-      <LazyAsideMenu />
-      <Suspense fallback={<div>Loading...</div>}>
-        {openModalSimulation && <SimulationModal />}
-      </Suspense>
-    </ConfigProvider>
+    <>
+      <Helmet>
+        <title>Your Site Title</title>
+        {/* Add other meta tags if needed */}
+      </Helmet>
+      <ConfigProvider
+        locale={locale}
+        theme={{
+          token: {
+            fontFamily: primaryRegularFont,
+            hoverBorderColor: " #088772",
+          },
+        }}
+      >
+        <div className={style.wrapper}>
+          <header className={style.bgHeader}>
+            <Navbar />
+          </header>
+          <Routes>
+            <Route
+              path="/"
+              element={<Navigate to={`/${language}/web/guest/acceuil`} />}
+            />
+            <Route
+              path={`/${language}/web/guest/acceuil`}
+              element={
+                <Suspense
+                  fallback={
+                    <Spin
+                      spinning
+                      fullscreen
+                      indicator={
+                        <LoadingOutlined style={{ fontSize: 24 }} spin />
+                      }
+                    />
+                  }
+                >
+                  <HomePage language={language} />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path={`/${language}/recalcul/account/log-in`}
+              element={
+                <Suspense
+                  fallback={
+                    <Spin
+                      spinning
+                      fullscreen
+                      indicator={
+                        <LoadingOutlined style={{ fontSize: 24 }} spin />
+                      }
+                    />
+                  }
+                >
+                  <LoginPage language={language} />
+                </Suspense>
+              }
+            />
+            <Route
+              path={`/${language}/recalcul/account/register`}
+              element={
+                <Suspense
+                  fallback={
+                    <Spin
+                      spinning
+                      fullscreen
+                      indicator={
+                        <LoadingOutlined style={{ fontSize: 24 }} spin />
+                      }
+                    />
+                  }
+                >
+                  <SignUpPage language={language} />
+                </Suspense>
+              }
+            />
+          </Routes>
+
+          <Footer />
+          <BackTop visibilityHeight={0} />
+        </div>
+        <LazyAsideMenu />
+        <Suspense fallback={<div>Loading...</div>}>
+          {openModalSimulation && <SimulationModal />}
+        </Suspense>
+      </ConfigProvider>
+    </>
   );
 }
 

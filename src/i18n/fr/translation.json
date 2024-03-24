@@ -27,7 +27,7 @@
   "MovingToRSU": " Aller à RSU.ma ",
   "Vidéo promotionnelle": "Vidéo promo",
   "LeavingtoRsuLink": "Cliquez sur le lien suivant pour passer",
-  "CopyPaste": " Vous savez quoi faire : COPIER-COLLER. ",
+  "CopyPaste": " Vous savez quoi faire : COPIER la configuration et COLLER la ",
   "avantageSubscribing": "Avantages de l'inscription",
   "MenageAccount": "Compte ménage",
   "DoUKnow": "Le saviez-vous?",
@@ -47,5 +47,43 @@
   "leaveSite": "Quittez ce site web et passez définitivement à l'application web gouvernementale officielle sur rsu.ma.",
   "visitRnpWebsite": "Si vous n'avez pas encore d'identifiant numérique civil et social, rendez-vous sur la page RNP.ma pour savoir comment en obtenir un.",
   "visitRnpWebsiteDescription": "Ceci est une étape obligatoire. Vous devez avoir votre code IDCS pour continuer.",
-  "Our partners": "Nos sources d'information fiables"
+  "Our partners": "Nos sources d'information fiables",
+
+  "homePage": "Page d'accueil",
+  "AboutOurSite": "À propos de notre site",
+  "FAQS": "FAQ",
+  "ServicesAndProcedures": "Services et procédures",
+  "AllServices": "Tous les services",
+  "AllProcedures": "Toutes les procédures",
+  "LegalInformation": "Informations légales",
+  "Legal Notices": "Mentions légales",
+  "Legislative Texts": "Textes législatifs",
+  "CopyrightRNA": "© Plateforme Recalcul.ma 2022. Tous droits réservés.",
+  "login": " S'authentifier",
+  "cancel": "Annuler",
+  "password": "Mot de passe",
+  "noAccountYet": "Pas encore de compte ?",
+
+  "/////_": "***_Generic text",
+  "fieldIsRequired": "Ce champ est requis",
+
+  "///////_": "***_Login page text",
+  "AccountMenage": "Gestion de compte",
+  "WelcomeLoginPage": "Bienvenue sur la plateforme Recalcul.ma",
+  "DescLoginPage": "La gestion des comptes permet aux familles de soumettre des demandes de simulation pour obtenir leurs scores, de mettre à jour régulièrement leurs données familiales et d'accéder à divers services de la plateforme Recalcul.ma.",
+  "familyAccountAccessOnYourPlatform": "Accès au compte familial sur votre plateforme",
+
+  "////////_": "***_SignUp page text",
+  "DescSignUpPage": "Pour créer un compte sur la plateforme RECALCUL.MA, veuillez saisir une adresse électronique du chef de famille, la date de naissance et le sexe. Ensuite, un code de vérification sera envoyé par e-mail pour vérification.",
+  "Le score que j'ai obtenu de mon compte de notation.": "Le score que j'ai obtenu de mon compte de notation.",
+
+  "//////_": "***______Generic text__Auth_____",
+  "createAccount": "Créer un compte",
+  "getPassword": "Récupérer le mot de passe",
+  "usernameOrEmail": "Nom d'utilisateur ou adresse e-mail",
+  "username": "Nom d'utilisateur",
+  "Veuillez saisir votre nom d'utilisateur !": "Veuillez saisir votre nom d'utilisateur !",
+  "Veuillez saisir votre mot de passe !": "Veuillez saisir votre mot de passe !",
+  "Date of Birth": "Date de naissance",
+  "Veuillez saisir votre nom d'utilisateur": "Créer un compte sur votre plateforme"
 }

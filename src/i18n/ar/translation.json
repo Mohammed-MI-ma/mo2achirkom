@@ -77,5 +77,25 @@
   "_________FOOTER_BOTTOM": "null",
   "CopyrightRNA": "© منصة مؤشركم 2022. جميع الحقوق محفوظة.",
 
-  "Our partners": "مصادر"
+  "Our partners": "مصادرنا الموثوقة للمعلومات",
+
+  "****___LOGIN__PAGE": "null",
+  "AccountMenage": "حساب الاسرة",
+  "WelcomeLoginPage": "مرحبا بكم في البوابة الخاصة بمنصة مؤشركم",
+  "DescLoginPage": " يمكن حساب الأسرة من إيداع طلب محاكاة الحصول على التنقيط، تحيين المعطيات الخاصة بالاسرة باستمرار و الولوج إلى مختلف خدمات منصة مؤشركم",
+  "familyAccountAccessOnYourPlatform": "الولوج إلى حساب الأسرة في منصة مؤشركم",
+  "username": "اسم المستخدم",
+  "fieldIsRequired": "هذا حقل مطلوب",
+  "usernameOrEmail": "اسم المستخدم أو البريد الإلكتروني",
+  "password": "كلمة السر",
+  "noAccountYet": "ليس لديكم حساب بعد؟",
+  "createAccount": "إنشاء حساب",
+  "getPassword": "الحصول على كلمة المرور",
+  "login": "تسجيل الدخول",
+  "cancel": "إلغاء",
+  "Créer un compte": "إنشاء الحساب",
+  "DescSignUpPage": "لإنشاء حساب على منصة مؤشركم، يرجى إدخال عنوان البريد الإلكتروني لرب الأسرة، تاريخ الميلاد والجنس. بعد ذلك، سيتم إرسال رمز التحقق عبر البريد الإلكتروني للتحقق",
+  "Veuillez saisir votre nom d'utilisateur": " إنشاء حساب على منصة مؤشركم",
+  "Le score que j'ai obtenu de mon compte de notation.": "التنقيط التي حصلت عليها من حساب السجل الاجتماعي الموحد ",
+  "Date of Birth": "تاريخ الميلاد"
 }

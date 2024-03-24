@@ -1,7 +1,8 @@
 import { Image } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
-import { ASD, BULLETIN } from "../../images";
+import { BULLETIN } from "../../images";
+import asd from "../../assets/images/ASD.png";
 import { useTranslation } from "react-i18next";
 
 const OurPartners = () => {
@@ -20,32 +21,60 @@ const OurPartners = () => {
   };
   return (
     <section
-      className={`w-full flex flex-col`}
+      className={`w-full flex flex-col `}
       style={{
         minHeight: "384px",
+        background: "white",
       }}
     >
       <h1 className={`text-center`} style={sectionStyle}>
         {t("Our partners")}
       </h1>
-      <div className="grid lg:grid-cols-6 sm:grid-cols-1 md:grid-cols-3 gap-4 items-center flex-grow ">
+      <div
+        className="grid lg:grid-cols-6 sm:grid-cols-1 md:grid-cols-3 gap-10 items-center flex-grow "
+        style={{ margin: "0 auto" }}
+      >
         <div className="text-center">
-          <Image src={ASD} preview={false} width={"150px"} />
+          <Image src={asd} preview={false} width={"150px"} />
         </div>
         <div className="text-center">
           <Image src={BULLETIN} preview={false} width={"150px"} />
         </div>
         <div className="text-center">
-          <Image src={ASD} preview={false} width={"150px"} />
+          <Image
+            src={
+              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
+            }
+            preview={false}
+            width={"150px"}
+          />{" "}
         </div>
         <div className="text-center">
-          <Image src={ASD} preview={false} width={"150px"} />
+          <Image
+            src={
+              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
+            }
+            preview={false}
+            width={"150px"}
+          />{" "}
         </div>
         <div className="text-center">
-          <Image src={ASD} preview={false} width={"150px"} />
+          <Image
+            src={
+              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
+            }
+            preview={false}
+            width={"150px"}
+          />{" "}
         </div>
         <div className="text-center">
-          <Image src={ASD} preview={false} width={"150px"} />
+          <Image
+            src={
+              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
+            }
+            preview={false}
+            width={"150px"}
+          />{" "}
         </div>
       </div>
     </section>

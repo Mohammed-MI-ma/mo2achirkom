@@ -13,17 +13,19 @@
   --font-small-size: 0.875rem; /* 14px converted to rem */
   --font-medium-size: 1rem; /* 16px converted to rem */
   --font-large-size: 1.125rem; /* 18px converted to rem */
+  --font-extra-large-size: 1.375rem; /* 18px converted to rem */
 }
 
 /* Colors */
 :root {
   --color-primary: #161616; /* Primary color:Dark */
   --color-secondary: #0d0d0f; /* Secondary color:Gray */
-  --color-accent: #fefefe; /* Accent color */
+  --color-accent: #e3ad35; /* Accent color */
   --color-text: #333; /* Text color */
   --color-background: #1d1d1f; /* Background color */
-  --color-border: #ccc; /* Border color */
+  --color-red: #c42626; /* Border color */
   --color-theme: #088772;
+  --color-gray: #d0d0d0;
 }
 
 /* Spacing */
@@ -95,4 +97,7 @@ header {
 ::-webkit-scrollbar-thumb {
   background: var(--color-theme);
   border-radius: 5px;
+}
+:where(.css-dev-only-do-not-override-1o4xr7b).ant-picker-outlined {
+  width: 100%;
 }

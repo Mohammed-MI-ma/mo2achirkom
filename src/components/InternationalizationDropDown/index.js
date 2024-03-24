@@ -6,7 +6,7 @@ import ma from "../../assets/images/ma.svg";
 import { useTranslation } from "react-i18next";
 import { FaUser } from "react-icons/fa";
 import { Dropdown } from "antd";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setLanguage,
   setSiteDirection,
@@ -60,13 +60,21 @@ const InternationalizationDropDown = () => {
     i18n.changeLanguage(lng);
     dispatch(setLanguage(lng));
     dispatch(setSiteDirection(lng === "ar" ? "rtl" : "ltr"));
-
-    navigate("/", { replace: true }); // Navigate to the root URL without adding to history
-    navigate(`/${lng}/web/guest/acceuil`);
+    if (lng === "ar") {
+      navigate(window.location.pathname.replace(/^\/(fr|en)/, "/ar"));
+    } else if (lng === "fr") {
+      navigate(window.location.pathname.replace(/^\/(ar|en)/, "/fr"));
+    }
   };
+  const language = useSelector((state) => state.application.language);
 
+  const handleClick = () => {
+    // Navigate to the login page when the button is clicked
+    navigate(`/${language}/recalcul/account/log-in`);
+  };
   return (
     <Dropdown.Button
+      onClick={handleClick}
       type="text "
       arrow={true}
       menu={{ items }}

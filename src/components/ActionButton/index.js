@@ -2,7 +2,15 @@ import React from "react";
 import { Button, Tooltip } from "antd";
 import { useSelector } from "react-redux";
 
-const ActionButton = ({ size, icon, style, children, onClick, title }) => {
+const ActionButton = ({
+  size,
+  icon,
+  style,
+  children,
+  onClick,
+  title,
+  color,
+}) => {
   const languag = useSelector((state) => state.application.language);
 
   return (
@@ -21,6 +29,7 @@ const ActionButton = ({ size, icon, style, children, onClick, title }) => {
           ...style,
           fontFamily: `Primary-Regular-${languag}`,
           fontSize: "var(--font-small-size)",
+          backgroundColor: color,
           fontWeight: "bold",
           textAlign: `${languag === "ar" ? "right" : "left"}`,
         }}

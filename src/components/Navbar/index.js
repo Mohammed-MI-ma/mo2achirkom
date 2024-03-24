@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useTransition } from "react";
 import { Avatar, Button } from "antd";
 
 import NavbarItems from "./NavbarItems";
@@ -12,10 +12,15 @@ import { CgMenuRightAlt } from "react-icons/cg";
 import SearchInputField from "../SearchInputField";
 import { setSideMenuIsOpened } from "../../reducers/applicationService/applicationSlice";
 import logooo from "../../assets/images/LogoText.png";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const languag = useSelector((state) => state.application.language);
   const { t } = useTranslation();
+  const [startTransition, isPending] = useTransition();
+
   const d = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <div className={style.mainContainer}>
       <div
@@ -25,7 +30,14 @@ const Navbar = () => {
       >
         {/* Logo */}
         <div
-          className={`${style.logo} ${languag === "ar" ? style.reverse : ""}`}
+          onClick={() => {
+            // Navigate to the login page when the button is clicked
+
+            navigate(`/`);
+          }}
+          className={`${style.logo} ${
+            languag === "ar" ? style.reverse : ""
+          } cursor-pointer`}
         >
           <div
             className={`flex justify-start relative flex-col items-${

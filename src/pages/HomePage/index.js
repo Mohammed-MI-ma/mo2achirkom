@@ -7,7 +7,6 @@ import { Helmet } from "react-helmet";
 
 //__REACT_i18N
 import { useTranslation } from "react-i18next";
-import CustomBreadcrumb from "../../components/CustomBreadcrumb";
 import OurPartners from "../../components/OurPartners";
 
 const HomePage = ({ language }) => {
@@ -39,16 +38,10 @@ const HomePage = ({ language }) => {
         <meta name="twitter:card" content="summary_large_image" />
         {/* Add other meta tags as needed */}
       </Helmet>
-      <section style={{ flex: "1 1 auto" }}>
-        <section id={"main-content"}>
-          <HeroSection />
-        </section>
-        <section style={{ flex: "1 1 auto" }} id={"Partners"}>
-          <OurPartners />
-        </section>
-        <section style={{ flex: "1 1 auto" }}>
-          <BenefitsSubscribingComponent />
-        </section>
+      <section id={"main-content-home-page"}>
+        <HeroSection />
+        <OurPartners />
+        <BenefitsSubscribingComponent />
       </section>
     </>
   );
