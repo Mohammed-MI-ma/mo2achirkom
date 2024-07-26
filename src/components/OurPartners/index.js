@@ -16,12 +16,11 @@ const OurPartners = () => {
   const sectionStyle = {
     dir: language === "ar" ? "rtl" : "ltr",
     fontFamily: primaryRegularFont,
-    fontSize: "50px",
-    paddingTop: "70px",
+    fontSize: "30px",
   };
   return (
     <section
-      className={`w-full flex flex-col `}
+      className={`w-full flex flex-col py-10`}
       style={{
         minHeight: "384px",
         background: "white",
@@ -31,7 +30,7 @@ const OurPartners = () => {
         {t("Our partners")}
       </h1>
       <div
-        className="grid lg:grid-cols-6 sm:grid-cols-1 md:grid-cols-3 gap-10 items-center flex-grow "
+        className="grid lg:grid-cols-5 sm:grid-cols-1 md:grid-cols-3 gap-5 items-center flex-grow "
         style={{ margin: "0 auto" }}
       >
         <div className="text-center">
@@ -43,37 +42,28 @@ const OurPartners = () => {
         <div className="text-center">
           <Image
             src={
-              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
+              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/cnssPArtner.png"
             }
             preview={false}
-            width={"150px"}
+            width={"100px"}
+          />
+        </div>{" "}
+        <div className="text-center">
+          <Image
+            src={
+              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/rsuPartner.svg"
+            }
+            preview={false}
+            width={"100px"}
           />{" "}
         </div>
         <div className="text-center">
           <Image
             src={
-              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
+              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/rnpPartner.png"
             }
             preview={false}
-            width={"150px"}
-          />{" "}
-        </div>
-        <div className="text-center">
-          <Image
-            src={
-              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
-            }
-            preview={false}
-            width={"150px"}
-          />{" "}
-        </div>
-        <div className="text-center">
-          <Image
-            src={
-              "https://raw.githubusercontent.com/Mohammed-MI-ma/assets/main/ASD.png"
-            }
-            preview={false}
-            width={"150px"}
+            width={"200px"}
           />{" "}
         </div>
       </div>

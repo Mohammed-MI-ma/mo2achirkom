@@ -20,7 +20,7 @@
   "Search": "بحث...",
   "How2CreateAccount": "كيفية إنشاء حساب",
   "Simulation": "محاكاة",
-  "startSimulationNow": " ابدأ في المحاكاة الآن",
+  "startSimulationNow": " احسب درجة أسرتي",
   "startSimulationNowDesc": "لا تتردد في مشاهدة",
   "Vidéo promotionnelle": "فيديو ترويجي",
   "SkipToRSU": " الانتقال إلى منصة السجل الاجتماعي الموحد ؟",
@@ -37,8 +37,8 @@
   "introductionFirstPart": " يُعد هذا تطبيق الويب خدمة ",
   "introductionSecondPart": " تهدف إلى منح الأشخاص إمكانية لاختبار معطياتهم الإجتماعية والإقتصادية ",
   "introductionThirdPart": "وذلك لحساب مؤشر أولي و تقريبي للأسرة",
-  "service24/7": " المحاكاة مفتوحة بالمجان وبشكل دائم. ",
-  "keyword_FREE": "مجانية ",
+  "service24/7": "",
+  "keyword_FREE": "مدفوعة ",
   "privacy": "بخصوصية تامة ",
   "idcs": "أولاً:أُحصل  على IDCS",
   "RSU path": "https://www.rsu.ma/ar/web/guest/acceuil",
@@ -77,7 +77,7 @@
   "_________FOOTER_BOTTOM": "null",
   "CopyrightRNA": "© منصة مؤشركم 2022. جميع الحقوق محفوظة.",
 
-  "Our partners": "مصادرنا الموثوقة للمعلومات",
+  "Our partners": "مصادرنا للمعلومات",
 
   "****___LOGIN__PAGE": "null",
   "AccountMenage": "حساب الاسرة",
@@ -97,5 +97,9 @@
   "DescSignUpPage": "لإنشاء حساب على منصة مؤشركم، يرجى إدخال عنوان البريد الإلكتروني لرب الأسرة، تاريخ الميلاد والجنس. بعد ذلك، سيتم إرسال رمز التحقق عبر البريد الإلكتروني للتحقق",
   "Veuillez saisir votre nom d'utilisateur": " إنشاء حساب على منصة مؤشركم",
   "Le score que j'ai obtenu de mon compte de notation.": "التنقيط التي حصلت عليها من حساب السجل الاجتماعي الموحد ",
-  "Date of Birth": "تاريخ الميلاد"
+  "Date of Birth": "تاريخ الميلاد",
+
+  "Plans et Tarifs": " باقاتنا",
+  "Une clé pour tous les programmes sociaux pour chaque Marocain, 100% marocain.": "مفتاح لجميع البرامج الاجتماعية لكل مغربي، 100% مغربي",
+  "Choisissez le plan qui vous convient le mieux. Nos options de tarification sont flexibles et adaptées à vos besoins.": "اختر الخطة التي تناسب احتياجاتك. خيارات التسعير لدينا مرنة ومصممة لتلبية احتياجاتك"
 }

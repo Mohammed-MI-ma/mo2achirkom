@@ -1,7 +1,6 @@
-import { Spin } from "antd";
 import React from "react";
-
-const Loader = ({ isLoading }) => {
+import style from "./loader.module.css";
+const Loader = () => {
   return (
     <div
       style={{
@@ -13,7 +12,17 @@ const Loader = ({ isLoading }) => {
         alignItems: "center",
       }}
     >
-      <Spin size="large" spinning={isLoading} />
+      <div className={style.sk_cube_grid}>
+        <div className={`${style.sk_cube} ${style.sk_cube1}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube2}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube3}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube4}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube5}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube6}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube7}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube8}`} />
+        <div className={`${style.sk_cube} ${style.sk_cube9}`} />
+      </div>
     </div>
   );
 };

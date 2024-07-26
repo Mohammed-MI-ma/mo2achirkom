@@ -24,8 +24,13 @@
   font-size: var(--font-small-size);
 }
 .gridStyle {
-  width: 25% !important;
+  width: inherit !important;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 }
 
 .cardContainer {
@@ -35,19 +40,34 @@
   box-shadow: none;
 }
 
-/* Responsive Design */
-@media (max-width: 576px) {
-  .doUKnow {
-    display: none;
-  }
-
+@media (max-width: 36rem) {
   .gridStyle {
-    width: 100% !important;
+    min-height: 150px;
   }
 }
 
-@media (min-width: 577px) and (max-width: 992px) {
-  /* No specific styles for tablets; keeping it empty */
+/* Styles for small devices (tablets) */
+@media (min-width: 36.063rem) and (max-width: 48rem) {
+  .searchEngine {
+    transform: translateY(70%);
+    width: 90%;
+  }
 }
 
-/* Add more media queries as needed for other device sizes */
+/* Styles for medium devices (laptops and desktops) */
+@media (min-width: 48.063rem) and (max-width: 62rem) {
+  .searchEngine {
+  }
+}
+
+/* Styles for large devices (desktops) */
+@media (min-width: 62.063rem) and (max-width: 75rem) {
+  .searchEngine {
+  }
+}
+
+/* Styles for extra large devices (large desktops and TVs) */
+@media (min-width: 75.063rem) {
+  .searchEngine {
+  }
+}

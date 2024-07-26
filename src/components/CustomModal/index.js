@@ -1,12 +1,13 @@
 import React from "react";
-import { Avatar, Card, ConfigProvider, Modal, Tooltip } from "antd";
+import { Avatar, Card, ConfigProvider, Modal, Tag, Tooltip } from "antd";
 import { useSelector } from "react-redux";
 import { CiSquarePlus } from "react-icons/ci";
 import { useTranslation } from "react-i18next";
 import style from "./customModal.module.css";
 import { familyMemebersList } from "./familyMembersList/familyMembersList";
 import { CiCircleInfo } from "react-icons/ci";
-import { GrStatusGood } from "react-icons/gr";
+import HoverableCard from "../HoverableCard";
+import { bgBlocTop } from "../../images";
 
 const CustomModal = ({ open, close }) => {
   //TRALTATION
@@ -86,66 +87,100 @@ const CustomModal = ({ open, close }) => {
               <p>النصوص التشريعية</p>
             </nav>
             <address>
-              {" "}
               <p>النصوص التشريعية</p>
             </address>
           </footer>
         }
       >
-        <div style={{ display: "flex" }}>
-          <section className={style.doUKnow}>
-            <h1 className={style.headerTitle}>
-              <GrStatusGood />
-              {t("DoUKnow")}
-            </h1>
-            <p>{t("tip1")}</p>
-          </section>
-
+        <div style={{ display: "flex" }} className="flex-col sm:flex-row">
           <Card className={style.cardContainer}>
             {familyMemebersList.map((familyMember, index) => (
-              <Card.Grid className={style.gridStyle} key={index}>
-                <Avatar
+              <HoverableCard>
+                <Card.Grid
+                  className={`${style.gridStyle} border rounded mb-2 shadow-lg`}
+                  key={index}
                   style={{
-                    background: "var(--color-theme)",
-                    cursor: "pointer",
-                  }}
-                  size={{
-                    xs: 24,
-                    sm: 32,
-                    md: 40,
-                    lg: 64,
-                    xl: 64,
-                    xxl: 64,
+                    border: "1px solid var(--color-theme)",
+                    borderRadius: "15px",
+                    background: `url(${bgBlocTop}) -700px -100px no-repeat,  100% 100% no-repeat, linear-gradient(90deg,white 100%,var(--color-theme) 72%,white 74%, rgba(217,235,232,1) 77%,rgba(246,255,254,1) 100%)`,
                   }}
                 >
-                  <>
-                    <p
+                  <div className="w-full flex justify-start">
+                    <Avatar
                       style={{
-                        direction: siteDir,
-                        fontFamily: siteFontReg,
+                        background: `url(${bgBlocTop}) -20px -50px no-repeat, url(${bgBlocTop}) 100% 100% no-repeat, linear-gradient(90deg,var(--color-theme) 100%,var(--color-theme) 72%,var(--color-theme) 74%, rgba(217,235,232,1) 77%,rgba(246,255,254,1) 100%)`,
+                        cursor: "pointer",
+                        minWidth: "48px",
                       }}
+                      size={48}
                     >
-                      {lang === "ar" && familyMember.arabic}
-                      {lang === "fr" && familyMember.french}
-                    </p>
-                  </>
-                </Avatar>
-              </Card.Grid>
+                      <>
+                        <p
+                          style={{
+                            direction: siteDir,
+                            fontFamily: siteFontReg,
+                          }}
+                        >
+                          {lang === "ar" && familyMember.arabic}
+                          {lang === "fr" && familyMember.french}
+                        </p>
+                      </>
+                    </Avatar>
+                  </div>
+
+                  <div className="w-full text-right">
+                    فرص حصول عائلتك على برامج المساعدة بناءً على "{" "}
+                    {lang === "ar" && familyMember.arabic}
+                    {lang === "fr" && familyMember.french}" هو رب الأسرة
+                  </div>
+                  <div className="flex justify-end flex-col w-full">
+                    <div>
+                      <ol
+                        style={{
+                          direction: "rtl",
+                          textAlign: "right",
+                          fontSize: "12px",
+                        }}
+                      >
+                        <li>
+                          برنامج آمو تضامن : <Tag color="success">90%</Tag>
+                        </li>
+                        <li>
+                          برنامج الدعم الاجتماعي المباشر :{" "}
+                          <Tag color="success">120%</Tag>
+                        </li>
+                        <li>
+                          برنامج البطالة :<Tag color="error">قريباً</Tag>
+                        </li>{" "}
+                        <li>
+                          برنامج التقاعد :<Tag color="error">قريباً</Tag>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </Card.Grid>
+              </HoverableCard>
             ))}
-            <Card.Grid className={style.gridStyle}>
-              <Avatar
-                size={{
-                  xs: 24,
-                  sm: 32,
-                  md: 40,
-                  lg: 64,
-                  xl: 64,
-                  xxl: 64,
-                }}
-                icon={<CiSquarePlus />}
-              />
-            </Card.Grid>
           </Card>
+          <div className="w-full sm:w-[300px] flex items-center justify-center flex-col shadow">
+            <div> أو جرب حصريا </div>
+            <div className="w-full text-center px-3">
+              <HoverableCard>
+                <div
+                  className="shadow-lg p-6"
+                  style={{
+                    borderRadius: "10px",
+                    background: `url(${bgBlocTop}) -20px -50px no-repeat, url(${bgBlocTop}) 100% 100% no-repeat, linear-gradient(90deg,var(--color-theme) 100%,var(--color-theme) 72%,var(--color-theme) 74%, rgba(217,235,232,1) 77%,rgba(246,255,254,1) 100%)`,
+                    color: "white",
+                    fontWeight: "700",
+                    width: "100%",
+                  }}
+                >
+                  مؤشركم AI?
+                </div>
+              </HoverableCard>
+            </div>
+          </div>
         </div>
       </Modal>
     </ConfigProvider>

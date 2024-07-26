@@ -25,43 +25,46 @@ import style from "./heroSection.module.css";
 
 //__IMAGES
 import { bgBlocTop } from "../../images";
+
 import { setPromoVideoOpened } from "../../reducers/applicationService/applicationSlice";
 // Lazily load the component responsible for starting the simulation modal
 const VideoPlayer = lazy(() => import("../VideoPlayer"));
+
 const HeroSteps = ({ language }) => {
-  // Retrieve the translation function from the useTranslation hook
+  //Hooks
   const { t } = useTranslation();
-  const directionStyle = { direction: language === "ar" ? "rtl" : "ltr" };
-  const promoVideoOpened = useSelector(
-    (state) => state.application.promoVideoOpened
-  );
+  const d = useDispatch();
   const [isPending, startTransition] = useTransition();
 
-  const d = useDispatch();
+  //Functions
   const handleButtonClick = (e) => {
     startTransition(() => {
       d(setPromoVideoOpened(e));
     });
   };
+  const promoVideoOpened = useSelector(
+    (state) => state.application.promoVideoOpened
+  );
+
+  const directionStyle = { direction: language === "ar" ? "rtl" : "ltr" };
 
   return (
-    <div className={style.descriptionCmtMeng} style={directionStyle}>
-      <ConfigProvider
-        theme={{
-          token: {
-            colorPrimary: "#088772",
-          },
-        }}
-      >
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#088772",
+        },
+      }}
+    >
+      <div className={style.descriptionCmtMeng} style={directionStyle}>
         <Steps
           type="navigation"
           size="small"
           current={1}
-          className="site-navigation-steps"
           items={[
             {
               title: (
-                <Link to={t("RNP path")} style={{ color: "gray" }}>
+                <Link to={t("RNP path")} style={{ color: "var(--color-text)" }}>
                   <StyledParagraph>
                     <Tooltip
                       title={
@@ -159,8 +162,8 @@ const HeroSteps = ({ language }) => {
             },
           ]}
         />
-      </ConfigProvider>
-    </div>
+      </div>
+    </ConfigProvider>
   );
 };
 
@@ -172,8 +175,7 @@ const HeroSection = () => {
         language === "fr" ? "lg:flex-row-reverse" : ""
       }`}
       style={{
-        minHeight: "384px",
-        background: `url(${bgBlocTop}) -254px -67px no-repeat, url(/o/rsu_theme/images/RSU-HERO-IMAGE2.png) 100% 100% no-repeat, linear-gradient(90deg,rgba(217,235,232,1) 100%,rgba(236,246,244,1) 72%,rgba(242,242,242,1) 74%, rgba(217,235,232,1) 77%,rgba(246,255,254,1) 100%)`,
+        background: `url(${bgBlocTop}) -100px 40px no-repeat, url(${bgBlocTop}) 100% 100% no-repeat, linear-gradient(90deg,rgba(217,235,232,1) 100%,rgba(236,246,244,1) 72%,rgba(242,242,242,1) 74%, rgba(217,235,232,1) 77%,rgba(246,255,254,1) 100%)`,
       }}
     >
       <div className="lg:w-1/2  p-4">

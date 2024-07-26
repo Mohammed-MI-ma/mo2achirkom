@@ -28,6 +28,8 @@ import Footer from "./components/Footer";
 import LazyAsideMenu from "./components/Mobile__Components/AsideMenuMobile";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Helmet } from "react-helmet";
+import BankTransferPage from "./pages/BankTransferPage";
+import HoverableCard from "./components/HoverableCard";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
@@ -85,10 +87,6 @@ function App() {
 
   return (
     <>
-      <Helmet>
-        <title>Your Site Title</title>
-        {/* Add other meta tags if needed */}
-      </Helmet>
       <ConfigProvider
         locale={locale}
         theme={{
@@ -125,7 +123,24 @@ function App() {
                 </Suspense>
               }
             />
-
+            <Route
+              path={`/${language}/web/guest/bankTransfer`}
+              element={
+                <Suspense
+                  fallback={
+                    <Spin
+                      spinning
+                      fullscreen
+                      indicator={
+                        <LoadingOutlined style={{ fontSize: 24 }} spin />
+                      }
+                    />
+                  }
+                >
+                  <BankTransferPage language={language} />
+                </Suspense>
+              }
+            />
             <Route
               path={`/${language}/recalcul/account/log-in`}
               element={
@@ -171,6 +186,27 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           {openModalSimulation && <SimulationModal />}
         </Suspense>
+        <div
+          className="flex fixed shadow"
+          style={{
+            bottom: 0,
+            left: 0,
+            background: "var(--color-theme)",
+            minWidth: "300px",
+            minHeight: "50px",
+            borderTopLeftRadius: "50px",
+            borderTopRightRadius: "50px",
+            textAlign: "center",
+            color: "white",
+            fontSize: "20px",
+            cursor: "pointer",
+            zIndex: "4000",
+          }}
+        >
+          <div className="w-full flex items-center justify-center">
+            <HoverableCard>هل تحتاج إلى مساعدة؟ </HoverableCard>
+          </div>
+        </div>
       </ConfigProvider>
     </>
   );

@@ -1,0 +1,8 @@
+.wrapBreadCrumb {
+  background-color: #088772;
+  min-height: 156px;
+  background-image: url(https://www.rsu.ma/o/rsu_theme/images/bgServiceEnLigneHeader.png);
+  background-repeat: no-repeat;
+  background-position: calc(100% + 58px) -9px;
+  padding: 65px 69px 0 69px;
+}

@@ -47,7 +47,7 @@
   "leaveSite": "Quittez ce site web et passez définitivement à l'application web gouvernementale officielle sur rsu.ma.",
   "visitRnpWebsite": "Si vous n'avez pas encore d'identifiant numérique civil et social, rendez-vous sur la page RNP.ma pour savoir comment en obtenir un.",
   "visitRnpWebsiteDescription": "Ceci est une étape obligatoire. Vous devez avoir votre code IDCS pour continuer.",
-  "Our partners": "Nos sources d'information fiables",
+  "Our partners": "Nos sources d'information",
 
   "homePage": "Page d'accueil",
   "AboutOurSite": "À propos de notre site",
@@ -85,5 +85,8 @@
   "Veuillez saisir votre nom d'utilisateur !": "Veuillez saisir votre nom d'utilisateur !",
   "Veuillez saisir votre mot de passe !": "Veuillez saisir votre mot de passe !",
   "Date of Birth": "Date de naissance",
-  "Veuillez saisir votre nom d'utilisateur": "Créer un compte sur votre plateforme"
+  "Veuillez saisir votre nom d'utilisateur": "Créer un compte sur votre plateforme",
+
+  "Plans et Tarifs": "Plans et Tarifs",
+  "Une clé pour tous les programmes sociaux pour chaque Marocain, 100% marocain.": "Une clé pour tous les programmes sociaux pour chaque Marocain, 100% marocain."
 }
